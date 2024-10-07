@@ -18,7 +18,7 @@ class LandmarkClassifier(torch.nn.Module):
         return out
 
 # Load the trained model
-input_size = 42  # Set this to match the training configuration
+input_size = 42  # Change to 84 if 2 hands
 hidden_size = 128
 num_classes = 5  # Adjust based on your actual number of classes
 model = LandmarkClassifier(input_size, hidden_size, num_classes)
@@ -87,7 +87,7 @@ while True:
                 data_aux.append(y - min(y_))
 
         # Ensure feature vector has correct length (42, adjust this if necessary)
-        data_aux = pad_or_truncate(data_aux, 42)
+        data_aux = pad_or_truncate(data_aux, 42) # Change to 84 if 2 hands
 
         # Convert to PyTorch tensor
         data_tensor = torch.tensor(data_aux, dtype=torch.float32).unsqueeze(0)  # Add batch dimension
